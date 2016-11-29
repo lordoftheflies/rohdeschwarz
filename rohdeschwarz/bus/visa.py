@@ -56,7 +56,8 @@ class VisaBus(object):
             VisaIOError: if instrument not found
         """
         resource_string = "{0}::{1}::INSTR".format(connection_method, address)
-        rm = pyvisa.ResourceManager()
+        # rm = pyvisa.ResourceManager()
+        rm = visa.ResourceManager('@py')
         instr = rm.open_resource(resource_string)
         self._instr = instr
         self._session = self._instr.session
